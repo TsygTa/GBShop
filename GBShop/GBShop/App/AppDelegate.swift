@@ -12,10 +12,52 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let requestFactory = RequestFactory()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let auth = requestFactory.makeAuthRequestFactory()
+        auth.login(userName: "Somebody", password: "mypassword") { response in
+            switch response.result {
+                case .success(let login):
+                    print(login)
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+        
+        let signUp = requestFactory.makeSignUpRequestFactory()
+        let userData = UserData(id: 123, email: "some@some.ru", gender: .male, creditCard: "9872389-2424-234224-234", bio: "This is good! I think I will switch to another language")
+        signUp.signUp(userName: "Somebody", password: "mypassword", userData: userData) { response in
+            switch response.result {
+            case .success(let userMessage):
+                print(userMessage)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let changeUserData = requestFactory.makeChangeUserDataRequestFactory()
+        let userDataForChange = UserData(id: 123, email: "some@some.ru", gender: .male, creditCard: "9872389-2424-234224-234", bio: "This is good! I think I will switch to another language")
+        changeUserData.changeData(userName: "Somebody", password: "mypassword", userData: userDataForChange) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let logOut = requestFactory.makeLogOutRequestFactory()
+        logOut.logOut(userName: "Somebody", password: "mypassword") { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
         return true
     }
 
