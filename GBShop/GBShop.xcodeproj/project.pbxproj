@@ -22,6 +22,14 @@
 		3F25935B22B603B900C1CB1F /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25935A22B603B900C1CB1F /* LoginResult.swift */; };
 		3F25935D22B603D100C1CB1F /* EmptyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F25935C22B603D100C1CB1F /* EmptyFile.swift */; };
 		3F25935F22B6040500C1CB1F /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F25935E22B6040500C1CB1F /* Empty.xib */; };
+		3F8BA8C622BFD57D00D194D5 /* ContainerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8C522BFD57D00D194D5 /* ContainerBuilder.swift */; };
+		3F8BA8C822BFE90900D194D5 /* ProductsListRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8C722BFE90900D194D5 /* ProductsListRequestFactory.swift */; };
+		3F8BA8CA22BFE9E500D194D5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8C922BFE9E500D194D5 /* Product.swift */; };
+		3F8BA8CC22BFEBB800D194D5 /* ProductsListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8CB22BFEBB800D194D5 /* ProductsListResult.swift */; };
+		3F8BA8CE22BFED3700D194D5 /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8CD22BFED3700D194D5 /* ProductsList.swift */; };
+		3F8BA8D222BFF58E00D194D5 /* ProductDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8D122BFF58E00D194D5 /* ProductDataResult.swift */; };
+		3F8BA8D422C0288200D194D5 /* ProductDataRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8D322C0288200D194D5 /* ProductDataRequestFactory.swift */; };
+		3F8BA8D622C0294600D194D5 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8BA8D522C0294600D194D5 /* ProductData.swift */; };
 		3FFBA54722BADCB10033533D /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54622BADCB10033533D /* RequestRouter.swift */; };
 		3FFBA54922BAFEFB0033533D /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54822BAFEFB0033533D /* RequestFactory.swift */; };
 		3FFBA54B22BB536C0033533D /* EmptyFile1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54A22BB536C0033533D /* EmptyFile1.swift */; };
@@ -80,6 +88,14 @@
 		3F25935A22B603B900C1CB1F /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
 		3F25935C22B603D100C1CB1F /* EmptyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFile.swift; sourceTree = "<group>"; };
 		3F25935E22B6040500C1CB1F /* Empty.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
+		3F8BA8C522BFD57D00D194D5 /* ContainerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerBuilder.swift; sourceTree = "<group>"; };
+		3F8BA8C722BFE90900D194D5 /* ProductsListRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListRequestFactory.swift; sourceTree = "<group>"; };
+		3F8BA8C922BFE9E500D194D5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		3F8BA8CB22BFEBB800D194D5 /* ProductsListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListResult.swift; sourceTree = "<group>"; };
+		3F8BA8CD22BFED3700D194D5 /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
+		3F8BA8D122BFF58E00D194D5 /* ProductDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataResult.swift; sourceTree = "<group>"; };
+		3F8BA8D322C0288200D194D5 /* ProductDataRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataRequestFactory.swift; sourceTree = "<group>"; };
+		3F8BA8D522C0294600D194D5 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
 		3FFBA54622BADCB10033533D /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		3FFBA54822BAFEFB0033533D /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		3FFBA54A22BB536C0033533D /* EmptyFile1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFile1.swift; sourceTree = "<group>"; };
@@ -193,6 +209,10 @@
 				3FFBA55C22BBC2400033533D /* ChangeUserDataRequestFactory.swift */,
 				3FFBA56222BBC6620033533D /* LogOutRequestFactory.swift */,
 				3FFBA56022BBC6390033533D /* LogOut.swift */,
+				3F8BA8C722BFE90900D194D5 /* ProductsListRequestFactory.swift */,
+				3F8BA8CD22BFED3700D194D5 /* ProductsList.swift */,
+				3F8BA8D322C0288200D194D5 /* ProductDataRequestFactory.swift */,
+				3F8BA8D522C0294600D194D5 /* ProductData.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -237,6 +257,9 @@
 				3FFBA55222BBA67B0033533D /* SignUpResult.swift */,
 				3FFBA55422BBA7C50033533D /* ChangeUserDataResult.swift */,
 				3FFBA55E22BBC5C90033533D /* LogOutResult.swift */,
+				3F8BA8C922BFE9E500D194D5 /* Product.swift */,
+				3F8BA8CB22BFEBB800D194D5 /* ProductsListResult.swift */,
+				3F8BA8D122BFF58E00D194D5 /* ProductDataResult.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -260,6 +283,7 @@
 		3F25935322B6028300C1CB1F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3F8BA8C422BFD4C400D194D5 /* Dependency */,
 				3F1AFC2122BA75CB00770764 /* Network */,
 			);
 			path = Core;
@@ -280,6 +304,14 @@
 				3FFBA54A22BB536C0033533D /* EmptyFile1.swift */,
 			);
 			path = Environments;
+			sourceTree = "<group>";
+		};
+		3F8BA8C422BFD4C400D194D5 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				3F8BA8C522BFD57D00D194D5 /* ContainerBuilder.swift */,
+			);
+			path = Dependency;
 			sourceTree = "<group>";
 		};
 		43E5139C622127846109D658 /* Pods */ = {
@@ -468,12 +500,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GBShop/Pods-GBShop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -531,12 +565,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8BA8C822BFE90900D194D5 /* ProductsListRequestFactory.swift in Sources */,
 				3FFBA55522BBA7C50033533D /* ChangeUserDataResult.swift in Sources */,
 				3FFBA55322BBA67B0033533D /* SignUpResult.swift in Sources */,
+				3F8BA8C622BFD57D00D194D5 /* ContainerBuilder.swift in Sources */,
 				3FFBA55F22BBC5C90033533D /* LogOutResult.swift in Sources */,
 				3FFBA56122BBC6390033533D /* LogOut.swift in Sources */,
 				3FFBA54922BAFEFB0033533D /* RequestFactory.swift in Sources */,
+				3F8BA8CA22BFE9E500D194D5 /* Product.swift in Sources */,
+				3F8BA8CE22BFED3700D194D5 /* ProductsList.swift in Sources */,
+				3F8BA8CC22BFEBB800D194D5 /* ProductsListResult.swift in Sources */,
 				3F1AFC2522BA787900770764 /* DataRequest.swift in Sources */,
+				3F8BA8D622C0294600D194D5 /* ProductData.swift in Sources */,
 				3F25935722B6037E00C1CB1F /* AbstractErrorParser.swift in Sources */,
 				3F25935922B6039E00C1CB1F /* AuthRequestFactory.swift in Sources */,
 				3F1AFC1D22BA71AB00770764 /* User.swift in Sources */,
@@ -545,9 +585,11 @@
 				3FFBA54722BADCB10033533D /* RequestRouter.swift in Sources */,
 				3F1AFC2022BA752A00770764 /* Auth.swift in Sources */,
 				3FFBA55D22BBC2400033533D /* ChangeUserDataRequestFactory.swift in Sources */,
+				3F8BA8D422C0288200D194D5 /* ProductDataRequestFactory.swift in Sources */,
 				3FFBA54B22BB536C0033533D /* EmptyFile1.swift in Sources */,
 				3F0E6BF722B5FE0D00319C85 /* AppDelegate.swift in Sources */,
 				3FFBA55922BBB3C80033533D /* UserData.swift in Sources */,
+				3F8BA8D222BFF58E00D194D5 /* ProductDataResult.swift in Sources */,
 				3FFBA55722BBA8E30033533D /* SignUp.swift in Sources */,
 				3FFBA56322BBC6620033533D /* LogOutRequestFactory.swift in Sources */,
 				3FFBA54F22BB56D20033533D /* SignUpRequestFactory.swift in Sources */,
