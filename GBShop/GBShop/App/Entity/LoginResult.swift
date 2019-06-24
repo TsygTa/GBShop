@@ -1,5 +1,5 @@
 //
-//  EmptyFile.swift
+//  LoginResult.swift
 //  GBShop
 //
 //  Created by Tatiana Tsygankova on 16/06/2019.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct LoginResult: Codable {
+    let result: Int
+    let user: User
+}
