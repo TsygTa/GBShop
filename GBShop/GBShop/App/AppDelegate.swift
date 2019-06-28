@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let requestFactory = RequestFactory()
+    
+    private var containerBuilder: ContainerBuilder?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -58,12 +60,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        let productsList = requestFactory.makeProductsListRequestFactory()
+        productsList.getProductsList(page: 1, categoryId: 1) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let productData = requestFactory.makeProductDataRequestFactory()
+        productData.getProductData(productId: 123) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -76,7 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        self.containerBuilder = ContainerBuilder()
+        self.containerBuilder?.build()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
