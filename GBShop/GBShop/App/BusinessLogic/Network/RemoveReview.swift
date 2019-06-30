@@ -1,15 +1,15 @@
 //
-//  LogOut.swift
+//  RemoveReview.swift
 //  GBShop
 //
-//  Created by Tatiana Tsygankova on 20/06/2019.
+//  Created by Tatiana Tsygankova on 30/06/2019.
 //  Copyright © 2019 Tatiana Tsygankova. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class LogOut: AbstractRequestFactory {
+class RemoveReview: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
@@ -22,24 +22,24 @@ class LogOut: AbstractRequestFactory {
     }
 }
 
-extension LogOut: LogOutRequestFactory {
-    func logOut(userId: Int, completionHandler: @escaping(DataResponse<LogOutResult>) -> Void) {
-        let requestModel = LogOut(baseUrl: baseUrl, userId: userId)
+extension RemoveReview: RemoveReviewRequestFactory {
+    func removeReview(reviewId: Int, completionHandler: @escaping(DataResponse<RemoveReviewResult>) -> Void) {
+        let requestModel = RemoveReview(baseUrl: baseUrl,reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
-extension LogOut {
-    struct LogOut: RequestRouter {
+extension RemoveReview {
+    struct RemoveReview: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "logout"
+        let path: String = "removeReview"
         
-        let userId: Int
-
+        let reviewId: Int
+        
         var parameters: Parameters? {
             return [
-                "id_user" : userId
+                "id_comment": reviewId
             ]
         }
     }

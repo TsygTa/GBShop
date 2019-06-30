@@ -13,7 +13,7 @@ class ProductData: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string:"http://0.0.0.0:8080/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -33,7 +33,7 @@ extension ProductData {
     struct ProductData: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "getGoodById.json"
+        let path: String = "getGoodById"
         
         let productId: Int
         var parameters: Parameters? {
