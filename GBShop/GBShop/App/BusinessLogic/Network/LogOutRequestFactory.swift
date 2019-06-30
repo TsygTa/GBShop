@@ -10,5 +10,5 @@ import Foundation
 import Alamofire
 
 protocol LogOutRequestFactory {
-    func logOut(userName: String, password: String, completionHandler: @escaping (DataResponse<LogOutResult>) -> Void)
+    func logOut(userId: Int, completionHandler: @escaping (DataResponse<LogOutResult>) -> Void)
 }
