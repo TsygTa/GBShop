@@ -9,6 +9,6 @@
 import Foundation
 import Alamofire
 
-struct RemoveReviewResult: Codable {
-    let result: Int
+public struct RemoveReviewResult: Codable {
+    private let result: Int
 }

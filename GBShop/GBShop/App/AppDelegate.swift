@@ -11,8 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    let requestFactory = RequestFactory()
+    internal var window: UIWindow?
+    private let requestFactory = RequestFactory()
     
     private var containerBuilder: ContainerBuilder?
 
@@ -102,6 +102,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let removeReview = requestFactory.makeRemoveReviewRequestFactory()
         removeReview.removeReview(reviewId: 123) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let addToBasket = requestFactory.makeAddToBasketRequestFactory()
+        addToBasket.addToBasket(productId: 123, quantity: 5) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let deleteFromBasket = requestFactory.makeDeleteFromBasketRequestFactory()
+        deleteFromBasket.deleteFromBasket(productId: 123) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let payment = requestFactory.makePaymentRequestFactory()
+        payment.payment(userId: 123) { response in
             switch response.result {
             case .success(let value):
                 print(value)
