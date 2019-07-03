@@ -13,7 +13,7 @@ class ProductsList: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string:"http://0.0.0.0:8080/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -23,7 +23,7 @@ class ProductsList: AbstractRequestFactory {
 }
 
 extension ProductsList: ProductsListRequestFactory {
-    func getProductsList(page: Int, categoryId: Int, completionHandler: @escaping(DataResponse<[Product]>) -> Void) {
+    func getProductsList(page: Int, categoryId: Int, completionHandler: @escaping(DataResponse<ProductsListResult>) -> Void) {
         let requestModel = ProductsList(baseUrl: baseUrl, page: page, categoryId: categoryId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -33,7 +33,7 @@ extension ProductsList {
     struct ProductsList: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
+        let path: String = "catalogData"
         
         let page: Int
         let categoryId: Int

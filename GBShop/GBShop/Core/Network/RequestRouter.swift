@@ -28,6 +28,9 @@ extension RequestRouter {
     }
     
     var encoding: RequestRouterEncoding {
+        if( method == .post) {
+            return .json
+        }
         return .url
     }
     

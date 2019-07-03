@@ -11,8 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    let requestFactory = RequestFactory()
+    internal var window: UIWindow?
+    private let requestFactory = RequestFactory()
     
     private var containerBuilder: ContainerBuilder?
 
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let logOut = requestFactory.makeLogOutRequestFactory()
-        logOut.logOut(userName: "Somebody", password: "mypassword") { response in
+        logOut.logOut(userId: 123) { response in
             switch response.result {
             case .success(let value):
                 print(value)
@@ -72,6 +72,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let productData = requestFactory.makeProductDataRequestFactory()
         productData.getProductData(productId: 123) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let reviewsList = requestFactory.makeReviewsListRequestFactory()
+        reviewsList.getReviewsList(page: 1) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let addReview = requestFactory.makeAddReviewRequestFactory()
+        addReview.addReview(userId: 123, text: "Текст отзыва") { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
+        removeReview.removeReview(reviewId: 123) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let addToBasket = requestFactory.makeAddToBasketRequestFactory()
+        addToBasket.addToBasket(productId: 123, quantity: 5) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let deleteFromBasket = requestFactory.makeDeleteFromBasketRequestFactory()
+        deleteFromBasket.deleteFromBasket(productId: 123) { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
+        let payment = requestFactory.makePaymentRequestFactory()
+        payment.payment(userId: 123) { response in
             switch response.result {
             case .success(let value):
                 print(value)

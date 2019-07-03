@@ -1,15 +1,15 @@
 //
-//  LogOut.swift
+//  RewiesList.swift
 //  GBShop
 //
-//  Created by Tatiana Tsygankova on 20/06/2019.
+//  Created by Tatiana Tsygankova on 30/06/2019.
 //  Copyright © 2019 Tatiana Tsygankova. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class LogOut: AbstractRequestFactory {
+class ReviewsList: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
@@ -22,24 +22,23 @@ class LogOut: AbstractRequestFactory {
     }
 }
 
-extension LogOut: LogOutRequestFactory {
-    func logOut(userId: Int, completionHandler: @escaping(DataResponse<LogOutResult>) -> Void) {
-        let requestModel = LogOut(baseUrl: baseUrl, userId: userId)
+extension ReviewsList: ReviewsListRequestFactory {
+    func getReviewsList(page: Int, completionHandler: @escaping(DataResponse<ReviewsListResult>) -> Void) {
+        let requestModel = ReviewsList(baseUrl: baseUrl, page: page)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
-extension LogOut {
-    struct LogOut: RequestRouter {
+extension ReviewsList {
+    struct ReviewsList: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "logout"
+        let path: String = "getReviewsList"
         
-        let userId: Int
-
+        let page: Int
         var parameters: Parameters? {
             return [
-                "id_user" : userId
+                "page_number": page
             ]
         }
     }
