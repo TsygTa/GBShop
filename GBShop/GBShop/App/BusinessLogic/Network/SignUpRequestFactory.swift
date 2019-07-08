@@ -10,5 +10,5 @@ import Foundation
 import Alamofire
 
 protocol SignUpRequestFactory {
-    func signUp(userName: String, password: String, userData: UserData, completionHandler: @escaping (DataResponse<SignUpResult>) -> Void)
+    func signUp(user: User, completionHandler: @escaping (DataResponse<SignUpResult>) -> Void)
 }

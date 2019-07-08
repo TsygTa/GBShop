@@ -1,20 +1,19 @@
 //
-//  Auth.swift
+//  RemoveReview.swift
 //  GBShop
 //
-//  Created by Tatiana Tsygankova on 19/06/2019.
+//  Created by Tatiana Tsygankova on 30/06/2019.
 //  Copyright © 2019 Tatiana Tsygankova. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+class RemoveReview: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
     let baseUrl = URL(string:"http://0.0.0.0:8081/")!
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -23,25 +22,24 @@ class Auth: AbstractRequestFactory {
     }
 }
 
-extension Auth: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping(DataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+extension RemoveReview: RemoveReviewRequestFactory {
+    func removeReview(reviewId: Int, completionHandler: @escaping(DataResponse<RemoveReviewResult>) -> Void) {
+        let requestModel = RemoveReview(baseUrl: baseUrl,reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
-extension Auth {
-    struct Login: RequestRouter {
+extension RemoveReview {
+    struct RemoveReview: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "login"
+        let path: String = "removeReview"
         
-        let login: String
-        let password: String
+        let reviewId: Int
+        
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "id_comment": reviewId
             ]
         }
     }

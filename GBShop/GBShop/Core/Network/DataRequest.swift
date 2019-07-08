@@ -14,6 +14,7 @@ extension DataRequest {
     func responseCodable<T: Decodable>(errorParser: AbstractErrorParser, queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<T>) -> Void) -> Self {
         
         let responseSerialiser = DataResponseSerializer<T> { request, response, data, error in
+            
             if let error = errorParser.parse(response: response, data: data, error: error ) {
                 return .failure(error)
             }

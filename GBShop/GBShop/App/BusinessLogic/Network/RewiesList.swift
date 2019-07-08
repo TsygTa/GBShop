@@ -1,20 +1,19 @@
 //
-//  Auth.swift
+//  RewiesList.swift
 //  GBShop
 //
-//  Created by Tatiana Tsygankova on 19/06/2019.
+//  Created by Tatiana Tsygankova on 30/06/2019.
 //  Copyright © 2019 Tatiana Tsygankova. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+class ReviewsList: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
     let baseUrl = URL(string:"http://0.0.0.0:8081/")!
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -23,25 +22,23 @@ class Auth: AbstractRequestFactory {
     }
 }
 
-extension Auth: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping(DataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+extension ReviewsList: ReviewsListRequestFactory {
+    func getReviewsList(page: Int, completionHandler: @escaping(DataResponse<ReviewsListResult>) -> Void) {
+        let requestModel = ReviewsList(baseUrl: baseUrl, page: page)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
-extension Auth {
-    struct Login: RequestRouter {
+extension ReviewsList {
+    struct ReviewsList: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "login"
+        let path: String = "getReviewsList"
         
-        let login: String
-        let password: String
+        let page: Int
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "page_number": page
             ]
         }
     }
