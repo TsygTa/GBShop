@@ -13,7 +13,7 @@ class ChangeUserData: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
-    let baseUrl = URL(string:"http://0.0.0.0:8080/")!
+    let baseUrl = URL(string:"http://0.0.0.0:8081/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -23,8 +23,8 @@ class ChangeUserData: AbstractRequestFactory {
 }
 
 extension ChangeUserData: ChangeUserDataRequestFactory {
-    func changeData(userName: String, password: String, userData: UserData, completionHandler: @escaping(DataResponse<ChangeUserDataResult>) -> Void) {
-        let requestModel = ChangeUserData(baseUrl: baseUrl, login: userName, password: password, userData: userData)
+    func changeData(user: User, completionHandler: @escaping(DataResponse<ChangeUserDataResult>) -> Void) {
+        let requestModel = ChangeUserData(baseUrl: baseUrl, user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -35,18 +35,19 @@ extension ChangeUserData {
         let method: HTTPMethod = .post
         let path: String = "changeUserData"
         
-        let login: String
-        let password: String
-        let userData: UserData
+        let user: User
+        
         var parameters: Parameters? {
             return [
-                "id_user" : userData.id,
-                "username" : login,
-                "password" : password,
-                "email" : userData.email,
-                "gender": userData.gender.hashValue,
-                "credit_card" : userData.creditCard,
-                "bio" : userData.bio
+                "id" : user.id,
+                "name": user.name,
+                "lastname": user.lastname,
+                "login" : user.login,
+                "password" : user.password,
+                "email" : user.email,
+                "gender": user.gender.hashValue,
+                "creditCard" : user.creditCard,
+                "bio" : user.bio
             ]
         }
     }

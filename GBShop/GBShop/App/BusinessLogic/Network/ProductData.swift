@@ -13,7 +13,7 @@ class ProductData: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
-    let baseUrl = URL(string:"http://0.0.0.0:8080/")!
+    let baseUrl = URL(string:"http://0.0.0.0:8081/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
