@@ -11,74 +11,99 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    let requestFactory = RequestFactory()
+    internal var window: UIWindow?
+    private let requestFactory = NetworkService.instance.requestFactory
     
     private var containerBuilder: ContainerBuilder?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let auth = requestFactory.makeAuthRequestFactory()
-        auth.login(userName: "Somebody", password: "mypassword") { response in
-            switch response.result {
-                case .success(let login):
-                    print(login)
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
+        window = UIWindow(frame: UIScreen.main.bounds)
         
-        let signUp = requestFactory.makeSignUpRequestFactory()
-        let userData = UserData(id: 123, email: "some@some.ru", gender: .male, creditCard: "9872389-2424-234224-234", bio: "This is good! I think I will switch to another language")
-        signUp.signUp(userName: "Somebody", password: "mypassword", userData: userData) { response in
-            switch response.result {
-            case .success(let userMessage):
-                print(userMessage)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
-        let changeUserData = requestFactory.makeChangeUserDataRequestFactory()
-        let userDataForChange = UserData(id: 123, email: "some@some.ru", gender: .male, creditCard: "9872389-2424-234224-234", bio: "This is good! I think I will switch to another language")
-        changeUserData.changeData(userName: "Somebody", password: "mypassword", userData: userDataForChange) { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
-        let logOut = requestFactory.makeLogOutRequestFactory()
-        logOut.logOut(userName: "Somebody", password: "mypassword") { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
-        let productsList = requestFactory.makeProductsListRequestFactory()
-        productsList.getProductsList(page: 1, categoryId: 1) { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
-        let productData = requestFactory.makeProductDataRequestFactory()
-        productData.getProductData(productId: 123) { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        window?.rootViewController = UINavigationController(rootViewController: AuthViewController())
+        window?.makeKeyAndVisible()
+
+//
+//        let logOut = requestFactory.makeLogOutRequestFactory()
+//        logOut.logOut(userId: 123) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//
+//        let productData = requestFactory.makeProductDataRequestFactory()
+//        productData.getProductData(productId: 123) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        let reviewsList = requestFactory.makeReviewsListRequestFactory()
+//        reviewsList.getReviewsList(page: 1) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        let addReview = requestFactory.makeAddReviewRequestFactory()
+//        addReview.addReview(userId: 123, text: "Текст отзыва") { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
+//        removeReview.removeReview(reviewId: 123) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        let addToBasket = requestFactory.makeAddToBasketRequestFactory()
+//        addToBasket.addToBasket(productId: 123, quantity: 5) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        let deleteFromBasket = requestFactory.makeDeleteFromBasketRequestFactory()
+//        deleteFromBasket.deleteFromBasket(productId: 123) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+//
+//        let payment = requestFactory.makePaymentRequestFactory()
+//        payment.payment(userId: 123) { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
         
         return true
     }
@@ -104,7 +129,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
