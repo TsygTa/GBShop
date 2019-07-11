@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        window?.rootViewController = UINavigationController(rootViewController: AuthViewController(nibName: "AuthViewController", bundle: nil))
+        window?.rootViewController = UINavigationController(rootViewController: AuthViewController())
         window?.makeKeyAndVisible()
 
 //
@@ -34,15 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
 //
-//        let productsList = requestFactory.makeProductsListRequestFactory()
-//        productsList.getProductsList(page: 1, categoryId: 1) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
 //
 //        let productData = requestFactory.makeProductDataRequestFactory()
 //        productData.getProductData(productId: 123) { response in

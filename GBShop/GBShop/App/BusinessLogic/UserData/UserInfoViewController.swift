@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: UIViewController, Scrollable {
 
     @IBOutlet weak var userNameTextField: UITextField!
     
@@ -26,6 +26,10 @@ class UserInfoViewController: UIViewController {
     
     @IBOutlet weak var lastNameTextField: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBAction func onSaveButtonTap(_ sender: Any) {
         
         guard let login = self.userNameTextField.text, !login.isEmpty,
@@ -38,7 +42,8 @@ class UserInfoViewController: UIViewController {
         guard let user = UserDefaults.instance.user, user.id > 0 else {
             return
         }
-        
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         let changeUserData = NetworkService.instance.requestFactory.makeChangeUserDataRequestFactory()
         
         let userDataForChange = User(
@@ -52,6 +57,8 @@ class UserInfoViewController: UIViewController {
             creditCard: creditCardTextField.text ?? "",
             bio: bioTextField.text ?? "")
         changeUserData.changeData(user: userDataForChange) { response in
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
             switch response.result {
             case .success(let value):
                 print(value)
@@ -59,12 +66,26 @@ class UserInfoViewController: UIViewController {
                     self.showAlert(title: "Attention", message: "User data has been changed")
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                self.showAlert(error: error.localizedDescription)
             }
         }
     }
     
+    init() {
+        super.init(nibName: "UserInfoViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBarController?.navigationItem.title = "User Profile"
+        
+        self.activityIndicator.isHidden = true
+        
         self.userNameTextField.text = UserDefaults.instance.user?.login
         self.passwordTextField.text = UserDefaults.instance.user?.password
         self.emailTextField.text = UserDefaults.instance.user?.email
@@ -72,11 +93,29 @@ class UserInfoViewController: UIViewController {
         self.creditCardTextField.text = UserDefaults.instance.user?.creditCard
         self.firstNameTextField.text = UserDefaults.instance.user?.name
         self.lastNameTextField.text = UserDefaults.instance.user?.lastname
-        super.viewDidLoad()
+        
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.view.addGestureRecognizer(hideKeyboardGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWillBeHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyBoardWasShown(notification: Notification) {
+        keyBoardWasShown(notification: notification, scrollView: scrollView)
+    }
+    
+    @objc func keyBoardWillBeHidden(notification: Notification) {
+        
+        keyBoardWillBeHidden(notification: notification, scrollView: scrollView)
+    }
+    
+    @objc func hideKeyboard() {
+        self.hideKeyboard(scrollView: scrollView)
     }
 }

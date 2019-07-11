@@ -9,11 +9,16 @@
 import Foundation
 import Alamofire
 
-enum RequestRouterEncoding {
+/// Тип запроса
+///
+/// - url: для GET запросов
+/// - json: для POST запросов
+public enum RequestRouterEncoding {
     case url, json
 }
 
-protocol RequestRouter: URLRequestConvertible {
+/// Протокол для формирования запроса
+public protocol RequestRouter: URLRequestConvertible {
     var baseUrl: URL { get }
     var method: HTTPMethod { get }
     var path: String { get }
@@ -22,19 +27,27 @@ protocol RequestRouter: URLRequestConvertible {
     var encoding: RequestRouterEncoding { get }
 }
 
+// MARK: - Формирование запроса
 extension RequestRouter {
-    var fullUrl: URL {
+    
+    /// URL запроса
+    public var fullUrl: URL {
         return baseUrl.appendingPathComponent(path)
     }
     
-    var encoding: RequestRouterEncoding {
+    /// Тип запроса
+    public var encoding: RequestRouterEncoding {
         if( method == .post) {
             return .json
         }
         return .url
     }
     
-    func asURLRequest() throws -> URLRequest {
+    /// Формирует запрос
+    ///
+    /// - Returns: запрос
+    /// - Throws: ошибки кодирования запроса
+    public func asURLRequest() throws -> URLRequest {
         var urlRequest = URLRequest(url: fullUrl)
         urlRequest.httpMethod = method.rawValue
         

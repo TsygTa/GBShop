@@ -8,13 +8,17 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, Scrollable {
 
     @IBOutlet weak var userNameTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func onSignUpButtonTap(_ sender: Any) {
         
@@ -25,7 +29,8 @@ class SignUpViewController: UIViewController {
                 self.showAlert(error: "Fill in all the fields")
                 return
         }
-        
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         let signUp = NetworkService.instance.requestFactory.makeSignUpRequestFactory()
         let user = User(
             id: 0,
@@ -38,6 +43,8 @@ class SignUpViewController: UIViewController {
             creditCard: "",
             bio: "")
         signUp.signUp(user: user) { response in
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
             switch response.result {
             case .success(let userMessage):
                 print(userMessage)
@@ -55,10 +62,41 @@ class SignUpViewController: UIViewController {
 
     }
     
+    init() {
+        super.init(nibName: "SignUpViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        activityIndicator.isHidden = true
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        self.view.addGestureRecognizer(hideKeyboardGesture)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWillBeHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyBoardWasShown(notification: Notification) {
+        keyBoardWasShown(notification: notification, scrollView: scrollView)
+    }
+    
+    @objc func keyBoardWillBeHidden(notification: Notification) {
+        
+        keyBoardWillBeHidden(notification: notification, scrollView: scrollView)
+    }
+    
+    @objc func hideKeyboard() {
+        hideKeyboard(scrollView: scrollView)
     }
 
 }

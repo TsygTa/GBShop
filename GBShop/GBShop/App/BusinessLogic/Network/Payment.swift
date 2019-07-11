@@ -11,9 +11,9 @@ import Alamofire
 
 /// Класс запроса на оплату товара
 public class Payment: AbstractRequestFactory {
-    internal let errorParser: AbstractErrorParser
-    internal let sessionManager: SessionManager
-    internal let queue: DispatchQueue?
+    public let errorParser: AbstractErrorParser
+    public let sessionManager: SessionManager
+    public let queue: DispatchQueue?
     private let baseUrl = URL(string:"http://0.0.0.0:8081/")!
     
     internal init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {

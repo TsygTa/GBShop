@@ -60,6 +60,8 @@
 		3FAA3CC722D351660021BD7E /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F61299E22D278EA004B6E97 /* AuthViewController.xib */; };
 		3FAA3CC822D351660021BD7E /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F61299A22D277B0004B6E97 /* SignUpViewController.xib */; };
 		3FAA3CC922D351660021BD7E /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6129A222D27927004B6E97 /* UserInfoViewController.xib */; };
+		3FE4FAC022D66A020084DE88 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4FABE22D66A020084DE88 /* ProductsTableViewController.swift */; };
+		3FE4FAC322D676360084DE88 /* ProductTableStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE4FAC222D676360084DE88 /* ProductTableStoryboard.storyboard */; };
 		3FFBA54722BADCB10033533D /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54622BADCB10033533D /* RequestRouter.swift */; };
 		3FFBA54922BAFEFB0033533D /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54822BAFEFB0033533D /* RequestFactory.swift */; };
 		3FFBA54B22BB536C0033533D /* EmptyFile1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54A22BB536C0033533D /* EmptyFile1.swift */; };
@@ -153,6 +155,8 @@
 		3F8BA8D122BFF58E00D194D5 /* ProductDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataResult.swift; sourceTree = "<group>"; };
 		3F8BA8D322C0288200D194D5 /* ProductDataRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataRequestFactory.swift; sourceTree = "<group>"; };
 		3F8BA8D522C0294600D194D5 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
+		3FE4FABE22D66A020084DE88 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
+		3FE4FAC222D676360084DE88 /* ProductTableStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProductTableStoryboard.storyboard; sourceTree = "<group>"; };
 		3FFBA54622BADCB10033533D /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		3FFBA54822BAFEFB0033533D /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		3FFBA54A22BB536C0033533D /* EmptyFile1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFile1.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 		3F25934F22B6020E00C1CB1F /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				3F68CD5422D60BD700DC9F52 /* ProductsTable */,
 				3F61298A22D1496D004B6E97 /* UserData */,
 				3F1AFC1E22BA738F00770764 /* Network */,
 			);
@@ -352,6 +357,7 @@
 		3F25935222B6026D00C1CB1F /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				3F68CD5922D60CA700DC9F52 /* ProductsTable */,
 				3F61298322D127AF004B6E97 /* AuthSignUpUserInfo */,
 			);
 			path = Flows;
@@ -403,6 +409,22 @@
 				3F6129A522D294BA004B6E97 /* UserDefaults.swift */,
 			);
 			path = UserData;
+			sourceTree = "<group>";
+		};
+		3F68CD5422D60BD700DC9F52 /* ProductsTable */ = {
+			isa = PBXGroup;
+			children = (
+				3FE4FABE22D66A020084DE88 /* ProductsTableViewController.swift */,
+			);
+			path = ProductsTable;
+			sourceTree = "<group>";
+		};
+		3F68CD5922D60CA700DC9F52 /* ProductsTable */ = {
+			isa = PBXGroup;
+			children = (
+				3FE4FAC222D676360084DE88 /* ProductTableStoryboard.storyboard */,
+			);
+			path = ProductsTable;
 			sourceTree = "<group>";
 		};
 		3F8BA8C422BFD4C400D194D5 /* Dependency */ = {
@@ -545,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAA3CC722D351660021BD7E /* AuthViewController.xib in Resources */,
+				3FE4FAC322D676360084DE88 /* ProductTableStoryboard.storyboard in Resources */,
 				3FAA3CC822D351660021BD7E /* SignUpViewController.xib in Resources */,
 				3FAA3CC922D351660021BD7E /* UserInfoViewController.xib in Resources */,
 				3F0E6C0122B5FE0E00319C85 /* LaunchScreen.storyboard in Resources */,
@@ -685,6 +708,7 @@
 				3F8BA8D622C0294600D194D5 /* ProductData.swift in Sources */,
 				3F2E619F22C8F06F0059BFD4 /* ReviewsListRequestFactory.swift in Sources */,
 				3F25935722B6037E00C1CB1F /* AbstractErrorParser.swift in Sources */,
+				3FE4FAC022D66A020084DE88 /* ProductsTableViewController.swift in Sources */,
 				3F2E61A522C8F5FF0059BFD4 /* AddReview.swift in Sources */,
 				3F25935922B6039E00C1CB1F /* AuthRequestFactory.swift in Sources */,
 				3F1AFC1D22BA71AB00770764 /* User.swift in Sources */,
