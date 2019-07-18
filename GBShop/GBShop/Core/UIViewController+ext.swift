@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
+// MARK: - Содержит методы, расширяющие UIViewController
 extension UIViewController {
+    /// Выводитокно с ошибкой
+    ///
+    /// - Parameter error: ошибка
     func showAlert(error: Error) {
         let alertVC = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         
@@ -17,6 +21,9 @@ extension UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
+    /// Выводит окно с ошибкой
+    ///
+    /// - Parameter error: строка с ошибкой
     func showAlert(error: String) {
         let alter = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -26,6 +33,11 @@ extension UIViewController {
         present(alter, animated: true, completion: nil)
     }
     
+    /// Выводит окно с сообщением
+    ///
+    /// - Parameters:
+    ///   - title: строка с заголовком окна
+    ///   - message: строка с сообщением
     func showAlert(title: String, message: String) {
         let alter = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -36,6 +48,10 @@ extension UIViewController {
     }
 }
 
+// MARK: - Содержит методы, расширяющие UIViewController и
+// реализующие протокол Scrollable
+
+/// Протокол Scrollable для реализации скроллинга при появлении клавиатуры
 public protocol Scrollable {}
 
 extension Scrollable where Self: UIViewController {
@@ -59,6 +75,22 @@ extension Scrollable where Self: UIViewController {
     
     func hideKeyboard(scrollView: UIScrollView) {
         scrollView.endEditing(true)
+    }
+}
+// MARK: - Содержит методы, расширяющие UIView
+public extension UIView {
+    
+    /// Загружает View из xib.
+    ///
+    /// - Returns: итоговое view.
+    func loadNib() -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        guard let nameNib = type(of: self).description().components(separatedBy: ".").last else {
+            return nil
+        }
+        let nib = UINib(nibName: nameNib, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 }
 

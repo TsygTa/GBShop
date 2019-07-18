@@ -7,11 +7,10 @@
 //
 
 import Foundation
+
 class UserDefaults {
-    
     private init() {}
     
     internal static let instance = UserDefaults()
-    
     internal var user: User?
 }

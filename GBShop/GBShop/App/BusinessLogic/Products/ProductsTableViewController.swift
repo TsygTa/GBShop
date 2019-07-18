@@ -15,9 +15,9 @@ class ProductsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.navigationItem.title = "Products Catalog"
-        
-        self.tableView.register(UITableViewCell.self,forCellReuseIdentifier: "ProductCellId")
     
+        self.tableView.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
+        
         let productsList = NetworkService.instance.requestFactory.makeProductsListRequestFactory()
         
         productsList.getProductsList(page: 1, categoryId: 1) { response in
@@ -38,6 +38,10 @@ class ProductsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
     }
     
+    public func onShowReviewButtonTap(productId: Int) {
+        self.navigationController?.pushViewController(ReviewsTableController(productId: productId), animated: true)
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,10 +56,18 @@ class ProductsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCellId", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? ProductCell else {
+            return UITableViewCell()
+        }
         
         let product = products[indexPath.row]
-        cell.textLabel?.text = " ID: \(product.id) - " + product.name + " - \(product.price) RUB"
+        
+        cell.configure(product: product, viewController: self)
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }

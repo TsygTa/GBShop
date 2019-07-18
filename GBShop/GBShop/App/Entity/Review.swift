@@ -10,12 +10,14 @@ import Foundation
 
 struct Review: Codable {
     let id: Int
-    let id_user: Int
+    let userId: Int?
+    let productId: Int
     let text: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "id_comment"
-        case id_user = "id_user"
-        case text = "text"
+        case id
+        case userId
+        case productId
+        case text
     }
 }

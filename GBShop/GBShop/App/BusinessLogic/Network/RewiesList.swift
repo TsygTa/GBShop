@@ -23,8 +23,8 @@ class ReviewsList: AbstractRequestFactory {
 }
 
 extension ReviewsList: ReviewsListRequestFactory {
-    func getReviewsList(page: Int, completionHandler: @escaping(DataResponse<ReviewsListResult>) -> Void) {
-        let requestModel = ReviewsList(baseUrl: baseUrl, page: page)
+    func getReviewsList(page: Int, productId: Int, completionHandler: @escaping(DataResponse<ReviewsListResult>) -> Void) {
+        let requestModel = ReviewsList(baseUrl: baseUrl, page: page, productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -36,9 +36,12 @@ extension ReviewsList {
         let path: String = "getReviewsList"
         
         let page: Int
+        let productId: Int
+        
         var parameters: Parameters? {
             return [
-                "page_number": page
+                "page": page,
+                "productId": productId
             ]
         }
     }

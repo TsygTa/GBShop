@@ -10,5 +10,5 @@ import Foundation
 import Alamofire
 
 protocol ReviewsListRequestFactory {
-    func getReviewsList(page: Int, completionHandler: @escaping (DataResponse<ReviewsListResult>) -> Void)
+    func getReviewsList(page: Int, productId: Int, completionHandler: @escaping (DataResponse<ReviewsListResult>) -> Void)
 }

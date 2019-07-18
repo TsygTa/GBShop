@@ -9,11 +9,11 @@
 import Foundation
 
 struct ReviewsListResult: Codable {
-    let page_number: Int
+    let page: Int
     let reviews: [Review]
     
     enum CodingKeys: String, CodingKey {
-        case page_number
+        case page
         case reviews
     }
 }
