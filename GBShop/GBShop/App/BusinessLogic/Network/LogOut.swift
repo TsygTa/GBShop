@@ -13,7 +13,7 @@ class LogOut: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: SessionManager
     let queue: DispatchQueue?
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string:"http://0.0.0.0:8081/")!
     
     init(errorParser: AbstractErrorParser, sessionManager: SessionManager, queue: DispatchQueue? = DispatchQueue.global(qos: .utility)) {
         self.errorParser = errorParser
@@ -23,8 +23,8 @@ class LogOut: AbstractRequestFactory {
 }
 
 extension LogOut: LogOutRequestFactory {
-    func logOut(userName: String, password: String, completionHandler: @escaping(DataResponse<LogOutResult>) -> Void) {
-        let requestModel = LogOut(baseUrl: baseUrl, login: userName, password: password)
+    func logOut(userId: Int, completionHandler: @escaping(DataResponse<LogOutResult>) -> Void) {
+        let requestModel = LogOut(baseUrl: baseUrl, userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -33,15 +33,13 @@ extension LogOut {
     struct LogOut: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "logout.json"
+        let path: String = "logout"
         
-        let login: String
-        let password: String
+        let userId: Int
 
         var parameters: Parameters? {
             return [
-                "username" : login,
-                "password" : password
+                "id_user" : userId
             ]
         }
     }
