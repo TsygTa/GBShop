@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SignUpResult: Codable {
+public struct SignUpResult: Codable {
     let result: Int
-    let userMessage: String
+    let userMessage: String?
 }

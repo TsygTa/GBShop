@@ -8,16 +8,32 @@
 
 import Foundation
 
-struct User: Codable {
-    let id: Int
-    let login: String
-    let name: String
-    let lastname: String
+
+enum Gender: String {
+    case male = "m"
+    case female = "f"
+}
+
+public struct User: Codable {
+    var id: Int = 0
+    var login: String = ""
+    var password: String = ""
+    var email: String = ""
+    var name: String = ""
+    var lastname: String = ""
+    var gender: String = "m"
+    var creditCard: String = ""
+    var bio: String = ""
     
     enum CodingKeys: String, CodingKey {
-        case id = "id_user"
-        case login = "user_login"
-        case name = "user_name"
-        case lastname = "user_lastname"
+        case id = "id"
+        case login = "login"
+        case password = "password"
+        case email = "email"
+        case name = "name"
+        case lastname = "lastname"
+        case gender = "gender"
+        case creditCard = "creditCard"
+        case bio = "bio"
     }
 }

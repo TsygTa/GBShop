@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProductsListResult: Codable {
+public struct ProductsListResult: Codable {
     let page_number: Int
     let products: [Product]
     

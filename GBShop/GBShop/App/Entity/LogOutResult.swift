@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct LogOutResult: Codable {
+public struct LogOutResult: Codable {
     let result: Int
 }
