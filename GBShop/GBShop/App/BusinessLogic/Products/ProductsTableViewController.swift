@@ -42,6 +42,23 @@ class ProductsTableViewController: UITableViewController {
         self.navigationController?.pushViewController(ReviewsTableController(productId: productId), animated: true)
     }
     
+    public func onAddToBasketButtonTap(productId: Int) {
+        let addToBasket = NetworkService.instance.requestFactory.makeAddToBasketRequestFactory()
+        addToBasket.addToBasket(productId: productId, quantity: 1) { response in
+            switch response.result {
+            case .success(let value):
+                if value.result == 1 {
+                    self.showAlert(title: "Attention", message: "The product has been added to basket")
+                } else {
+                    self.showAlert(error: "An error occurred")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.showAlert(error: error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

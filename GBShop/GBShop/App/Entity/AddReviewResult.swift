@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-struct AddReviewResult: Codable {
+public struct AddReviewResult: Codable {
     let result: Int
     let userMessage: String
 }

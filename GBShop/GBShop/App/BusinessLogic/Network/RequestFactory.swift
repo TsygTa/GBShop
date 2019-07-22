@@ -69,6 +69,11 @@ public class RequestFactory {
         let errorParser = makeErrorParser()
         return RemoveReview(errorParser: errorParser, sessionManager: commonSessionManager, queue: sessionQueue)
     }
+    /// Формирует запрос на получение списка товаров корзины пользователя
+    internal func makeBasketRequestFactory() -> BasketRequestFactory {
+        let errorParser = makeErrorParser()
+        return BasketRequest(errorParser: errorParser, sessionManager: commonSessionManager, queue: sessionQueue)
+    }
     /// Формирует запрос на добавление товара в корзину
     internal func makeAddToBasketRequestFactory() -> AddToBasketRequestFactory {
         let errorParser = makeErrorParser()

@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4w-03-gMH">
-                        <rect key="frame" x="5" y="5" width="386" height="30"/>
+                        <rect key="frame" x="5" y="5" width="351" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="ZYu-0O-acA"/>
                         </constraints>
@@ -59,17 +59,30 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtd-bX-m4Z">
+                        <rect key="frame" x="361" y="5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="3Ey-5O-ow2"/>
+                            <constraint firstAttribute="width" constant="30" id="bZG-31-H1O"/>
+                        </constraints>
+                        <state key="normal" title="AddToBasket" image="ibasket-50"/>
+                        <connections>
+                            <action selector="onAddToBasketTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5nI-8O-Yas"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Wtd-bX-m4Z" firstAttribute="leading" secondItem="O4w-03-gMH" secondAttribute="trailing" constant="5" id="406-vx-lei"/>
                     <constraint firstAttribute="trailing" secondItem="KuG-w7-qoC" secondAttribute="trailing" constant="5" id="CYs-Bl-NRd"/>
                     <constraint firstItem="KuG-w7-qoC" firstAttribute="top" secondItem="roi-VU-mwq" secondAttribute="top" id="GgN-LT-IZA"/>
+                    <constraint firstAttribute="trailing" secondItem="Wtd-bX-m4Z" secondAttribute="trailing" constant="5" id="Hdh-Db-Gg9"/>
                     <constraint firstItem="O4w-03-gMH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="LUD-Ks-ggN"/>
                     <constraint firstItem="roi-VU-mwq" firstAttribute="top" secondItem="O4w-03-gMH" secondAttribute="bottom" constant="5" id="RoK-I9-hlg"/>
                     <constraint firstItem="roi-VU-mwq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="UtI-Ke-Hvc"/>
+                    <constraint firstItem="Wtd-bX-m4Z" firstAttribute="top" secondItem="O4w-03-gMH" secondAttribute="top" id="Wop-WJ-Z3V"/>
                     <constraint firstItem="RN2-yV-Sli" firstAttribute="leading" secondItem="roi-VU-mwq" secondAttribute="trailing" constant="5" id="Zky-KV-CTN"/>
                     <constraint firstAttribute="bottom" secondItem="roi-VU-mwq" secondAttribute="bottom" constant="10" id="eGw-ua-UQ8"/>
                     <constraint firstItem="RN2-yV-Sli" firstAttribute="top" secondItem="roi-VU-mwq" secondAttribute="top" id="gUd-1C-asI"/>
-                    <constraint firstAttribute="trailing" secondItem="O4w-03-gMH" secondAttribute="trailing" constant="5" id="lhH-Im-pau"/>
                     <constraint firstItem="O4w-03-gMH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="u74-vQ-w8C"/>
                 </constraints>
             </tableViewCellContentView>
@@ -82,4 +95,7 @@
             <point key="canvasLocation" x="210.1449275362319" y="85.379464285714278"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ibasket-50" width="50" height="50"/>
+    </resources>
 </document>

@@ -10,5 +10,5 @@ import Foundation
 import Alamofire
 /// Структура ответа на запрос добавления товара в корзину
 public struct AddToBasketResult: Codable {
-    private let result: Int
+    let result: Int
 }

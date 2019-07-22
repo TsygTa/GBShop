@@ -11,6 +11,6 @@ import Alamofire
 
 /// Структура ответа на запрос оплаты товара
 public struct PaymentResult: Codable {
-    private let result: Int
-    private let userMessage: String
+    let result: Int
+    let userMessage: String
 }

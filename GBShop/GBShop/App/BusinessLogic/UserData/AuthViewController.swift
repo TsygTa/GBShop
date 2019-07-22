@@ -34,10 +34,12 @@ class AuthViewController: UIViewController, Scrollable {
             switch response.result {
             case .success(let login):
                 print(login)
-                UserDefaults.instance.user = login.user
-        
-                self.navigationController?.pushViewController(self.createTabBarController(), animated: true)
-                
+                if login.result == 1 {
+                    UserDefaults.instance.user = login.user
+                    self.navigationController?.pushViewController(self.createTabBarController(), animated: true)
+                } else {
+                    self.showAlert(error: login.errorMessage ?? "Error")
+                }
             case .failure(let error):
                 print(error.localizedDescription)
                 self.showAlert(error: error.localizedDescription)
@@ -50,9 +52,15 @@ class AuthViewController: UIViewController, Scrollable {
         let productsTableViewController = ProductsTableViewController()
         productsTableViewController.tabBarItem = UITabBarItem(title: "Products", image: nil, tag: 0)
         tabBarController.addChild(productsTableViewController)
+        
+        let basketViewController = BasketTableController()
+        basketViewController.tabBarItem = UITabBarItem(title: "Basket", image: nil, tag: 1)
+        tabBarController.addChild(basketViewController)
+        
         let userInfoViewController = UserInfoViewController()
-        userInfoViewController.tabBarItem = UITabBarItem(title: "Profile", image: nil, tag: 1)
+        userInfoViewController.tabBarItem = UITabBarItem(title: "Profile", image: nil, tag: 2)
         tabBarController.addChild(userInfoViewController)
+        
         return tabBarController
     }
     

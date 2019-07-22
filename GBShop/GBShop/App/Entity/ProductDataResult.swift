@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProductDataResult: Codable {
+public struct ProductDataResult: Codable {
     let result: Int
     let name: String
     let price: Int

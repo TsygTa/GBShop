@@ -8,9 +8,9 @@
 
 import Foundation
 
-class UserDefaults {
+public class UserDefaults {
     private init() {}
     
-    internal static let instance = UserDefaults()
-    internal var user: User?
+    static let instance = UserDefaults()
+    var user: User?
 }

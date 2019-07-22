@@ -11,5 +11,6 @@ import Alamofire
 
 /// Структура ответа на запрос удаления товара из корзины
 public struct DeleteFromBasketResult: Codable {
-    private let result: Int
+    let result: Int
+    let errorMessage: String?
 }

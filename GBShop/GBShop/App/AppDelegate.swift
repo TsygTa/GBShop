@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: AuthViewController())
         window?.makeKeyAndVisible()
 
-//
+
 //        let logOut = requestFactory.makeLogOutRequestFactory()
 //        logOut.logOut(userId: 123) { response in
 //            switch response.result {
@@ -33,8 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(error.localizedDescription)
 //            }
 //        }
-//
-//
 //        let productData = requestFactory.makeProductDataRequestFactory()
 //        productData.getProductData(productId: 123) { response in
 //            switch response.result {
@@ -45,15 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
 //
-//        let reviewsList = requestFactory.makeReviewsListRequestFactory()
-//        reviewsList.getReviewsList(page: 1) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
 //
 //        let addReview = requestFactory.makeAddReviewRequestFactory()
 //        addReview.addReview(userId: 123, text: "Текст отзыва") { response in
@@ -74,36 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print(error.localizedDescription)
 //            }
 //        }
-//
-//        let addToBasket = requestFactory.makeAddToBasketRequestFactory()
-//        addToBasket.addToBasket(productId: 123, quantity: 5) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//
-//        let deleteFromBasket = requestFactory.makeDeleteFromBasketRequestFactory()
-//        deleteFromBasket.deleteFromBasket(productId: 123) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//
-//        let payment = requestFactory.makePaymentRequestFactory()
-//        payment.payment(userId: 123) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
+
         
         return true
     }

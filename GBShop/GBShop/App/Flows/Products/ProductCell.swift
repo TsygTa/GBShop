@@ -23,6 +23,10 @@ public class ProductCell: UITableViewCell {
         self.viewController?.onShowReviewButtonTap(productId: self.productId)
     }
     
+    @IBAction func onAddToBasketTap(_ sender: Any) {
+        self.viewController?.onAddToBasketButtonTap(productId: self.productId)
+    }
+    
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)  {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }

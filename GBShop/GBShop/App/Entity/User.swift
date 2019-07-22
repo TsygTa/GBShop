@@ -14,7 +14,7 @@ enum Gender: String {
     case female = "f"
 }
 
-struct User: Codable {
+public struct User: Codable {
     var id: Int = 0
     var login: String = ""
     var password: String = ""

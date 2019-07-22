@@ -66,7 +66,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBC-bf-vPr">
+                        <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="AuthUserName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBC-bf-vPr">
                             <rect key="frame" x="140" y="136" width="252" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="cbP-en-W9d"/>
@@ -86,7 +86,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yyU-Z3-EYg">
+                        <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="AuthPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yyU-Z3-EYg">
                             <rect key="frame" x="140" y="206" width="252" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="5sk-6X-ZOZ"/>
@@ -100,7 +100,7 @@
                             <rect key="frame" x="188.5" y="266" width="37" height="37"/>
                             <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </activityIndicatorView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNR-5F-c7G">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="AuthLogin" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNR-5F-c7G">
                             <rect key="frame" x="157" y="316" width="100" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="DZ5-V6-GJC"/>
@@ -113,7 +113,7 @@
                                 <action selector="onLoginButtonTap:" destination="-1" eventType="touchUpInside" id="kAk-1U-Lu6"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gn2-iO-CJp">
+                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="AuthSignUp" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gn2-iO-CJp">
                             <rect key="frame" x="157" y="386" width="100" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ISn-Mq-Gdy"/>
