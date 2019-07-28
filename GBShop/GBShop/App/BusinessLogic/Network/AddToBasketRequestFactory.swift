@@ -15,5 +15,5 @@ public protocol AddToBasketRequestFactory {
     ///     productId - id товара
     ///     quantity - количество товара
     /// Возвращает: результат запроса
-    func addToBasket(productId: Int,  quantity: Int, completionHandler: @escaping (DataResponse<AddToBasketResult>) -> Void)
+    func addToBasket(userId: Int, productId: Int,  quantity: Int, completionHandler: @escaping (DataResponse<AddToBasketResult>) -> Void)
 }

@@ -10,4 +10,5 @@ import Foundation
 
 public struct LogOutResult: Codable {
     let result: Int
+    let errorMessage: String?
 }

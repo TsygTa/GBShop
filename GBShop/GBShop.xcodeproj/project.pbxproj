@@ -71,6 +71,11 @@
 		3FAA3CC722D351660021BD7E /* AuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F61299E22D278EA004B6E97 /* AuthViewController.xib */; };
 		3FAA3CC822D351660021BD7E /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F61299A22D277B0004B6E97 /* SignUpViewController.xib */; };
 		3FAA3CC922D351660021BD7E /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F6129A222D27927004B6E97 /* UserInfoViewController.xib */; };
+		3FC4F17322ECC700001ECAE0 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4F17122ECC700001ECAE0 /* ReviewViewController.swift */; };
+		3FC4F17422ECC700001ECAE0 /* ReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4F17222ECC700001ECAE0 /* ReviewViewController.xib */; };
+		3FC4F17722ED7D20001ECAE0 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4F17522ED7D20001ECAE0 /* ProductViewController.swift */; };
+		3FC4F17822ED7D20001ECAE0 /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4F17622ED7D20001ECAE0 /* ProductViewController.xib */; };
+		3FC4F17F22EDE3C0001ECAE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4F17E22EDE3C0001ECAE0 /* GoogleService-Info.plist */; };
 		3FE4FAC022D66A020084DE88 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4FABE22D66A020084DE88 /* ProductsTableViewController.swift */; };
 		3FFBA54722BADCB10033533D /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54622BADCB10033533D /* RequestRouter.swift */; };
 		3FFBA54922BAFEFB0033533D /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBA54822BAFEFB0033533D /* RequestFactory.swift */; };
@@ -176,6 +181,11 @@
 		3F8BA8D122BFF58E00D194D5 /* ProductDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataResult.swift; sourceTree = "<group>"; };
 		3F8BA8D322C0288200D194D5 /* ProductDataRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataRequestFactory.swift; sourceTree = "<group>"; };
 		3F8BA8D522C0294600D194D5 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
+		3FC4F17122ECC700001ECAE0 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		3FC4F17222ECC700001ECAE0 /* ReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReviewViewController.xib; path = ../../BusinessLogic/Reviews/ReviewViewController.xib; sourceTree = "<group>"; };
+		3FC4F17522ED7D20001ECAE0 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		3FC4F17622ED7D20001ECAE0 /* ProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProductViewController.xib; path = ../../BusinessLogic/Products/ProductViewController.xib; sourceTree = "<group>"; };
+		3FC4F17E22EDE3C0001ECAE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FE4FABE22D66A020084DE88 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 		3FFBA54622BADCB10033533D /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		3FFBA54822BAFEFB0033533D /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
@@ -250,6 +260,7 @@
 		3F0E6BF522B5FE0D00319C85 /* GBShop */ = {
 			isa = PBXGroup;
 			children = (
+				3FC4F17E22EDE3C0001ECAE0 /* GoogleService-Info.plist */,
 				3F0E6C0222B5FE0E00319C85 /* Info.plist */,
 				3F25934E22B601F600C1CB1F /* App */,
 				3F25935322B6028300C1CB1F /* Core */,
@@ -442,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				3FE4FABE22D66A020084DE88 /* ProductsTableViewController.swift */,
+				3FC4F17522ED7D20001ECAE0 /* ProductViewController.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -450,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				3F84E19222DFC9A0003952B2 /* ProductCell.swift */,
+				3FC4F17622ED7D20001ECAE0 /* ProductViewController.xib */,
 				3F84E19322DFC9A0003952B2 /* ProductCell.xib */,
 			);
 			path = Products;
@@ -459,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				3F84E18422DCCDDC003952B2 /* ReviewsTableController.swift */,
+				3FC4F17122ECC700001ECAE0 /* ReviewViewController.swift */,
 			);
 			path = Reviews;
 			sourceTree = "<group>";
@@ -467,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				3F84E18B22DCD08E003952B2 /* ReviewCell.swift */,
+				3FC4F17222ECC700001ECAE0 /* ReviewViewController.xib */,
 				3F84E18C22DCD08E003952B2 /* ReviewCell.xib */,
 			);
 			path = Reviews;
@@ -569,6 +584,7 @@
 				3F0E6C0E22B5FE0E00319C85 /* Sources */,
 				3F0E6C0F22B5FE0E00319C85 /* Frameworks */,
 				3F0E6C1022B5FE0E00319C85 /* Resources */,
+				557745BACB3BEF06B05384A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -630,10 +646,13 @@
 			files = (
 				3FAA3CC722D351660021BD7E /* AuthViewController.xib in Resources */,
 				3F22D67F22E114E10019A354 /* BasketProductCell.xib in Resources */,
+				3FC4F17422ECC700001ECAE0 /* ReviewViewController.xib in Resources */,
 				3F84E19522DFC9A0003952B2 /* ProductCell.xib in Resources */,
+				3FC4F17822ED7D20001ECAE0 /* ProductViewController.xib in Resources */,
 				3FAA3CC822D351660021BD7E /* SignUpViewController.xib in Resources */,
 				3F84E18E22DCD08E003952B2 /* ReviewCell.xib in Resources */,
 				3FAA3CC922D351660021BD7E /* UserInfoViewController.xib in Resources */,
+				3FC4F17F22EDE3C0001ECAE0 /* GoogleService-Info.plist in Resources */,
 				3F0E6C0122B5FE0E00319C85 /* LaunchScreen.storyboard in Resources */,
 				3F0E6BFE22B5FE0E00319C85 /* Assets.xcassets in Resources */,
 			);
@@ -688,6 +707,34 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GBShop/Pods-GBShop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBShop/Pods-GBShop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		557745BACB3BEF06B05384A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GBShopUITests/Pods-GBShopUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -699,7 +746,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBShop/Pods-GBShop-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBShopUITests/Pods-GBShopUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82E730708FC9ADF9E8D1F17C /* [CP] Check Pods Manifest.lock */ = {
@@ -766,6 +813,7 @@
 				3F28A18122CD44C10053E27D /* PaymentResult.swift in Sources */,
 				3FFBA56122BBC6390033533D /* LogOut.swift in Sources */,
 				3F28A18522CD46630053E27D /* Payment.swift in Sources */,
+				3FC4F17722ED7D20001ECAE0 /* ProductViewController.swift in Sources */,
 				3FFBA54922BAFEFB0033533D /* RequestFactory.swift in Sources */,
 				3F8BA8CA22BFE9E500D194D5 /* Product.swift in Sources */,
 				3F8BA8CE22BFED3700D194D5 /* ProductsList.swift in Sources */,
@@ -791,6 +839,7 @@
 				3F22D67E22E114E10019A354 /* BasketProductCell.swift in Sources */,
 				3FFBA55D22BBC2400033533D /* ChangeUserDataRequestFactory.swift in Sources */,
 				3F8BA8D422C0288200D194D5 /* ProductDataRequestFactory.swift in Sources */,
+				3FC4F17322ECC700001ECAE0 /* ReviewViewController.swift in Sources */,
 				3FFBA54B22BB536C0033533D /* EmptyFile1.swift in Sources */,
 				3F61299B22D277B1004B6E97 /* SignUpViewController.swift in Sources */,
 				3F0E6BF722B5FE0D00319C85 /* AppDelegate.swift in Sources */,
@@ -1023,7 +1072,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 423D8249CD4777B02E9B07D3 /* Pods-GBShopTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EC97Q5FY82;
@@ -1045,7 +1093,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF5C8974B97BEE237810BC33 /* Pods-GBShopTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EC97Q5FY82;
@@ -1067,7 +1114,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F1C336264B4A95C80113C9D /* Pods-GBShopUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EC97Q5FY82;
 				INFOPLIST_FILE = GBShopUITests/Info.plist;
@@ -1088,7 +1134,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0521761F850AE95171A00482 /* Pods-GBShopUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EC97Q5FY82;
 				INFOPLIST_FILE = GBShopUITests/Info.plist;

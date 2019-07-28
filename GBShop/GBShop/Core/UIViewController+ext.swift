@@ -17,7 +17,7 @@ extension UIViewController {
     func showAlert(error: Error) {
         let alertVC = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         
-        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
     
@@ -26,7 +26,7 @@ extension UIViewController {
     /// - Parameter error: строка с ошибкой
     func showAlert(error: String) {
         let alter = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         
         alter.addAction(action)
         
@@ -40,7 +40,16 @@ extension UIViewController {
     ///   - message: строка с сообщением
     func showAlert(title: String, message: String) {
         let alter = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        
+        alter.addAction(action)
+        
+        present(alter, animated: true, completion: nil)
+    }
+    
+    func showAlert(title: String, message: String, handler: @escaping (UIAlertAction)->Void) {
+        let alter = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: handler)
         
         alter.addAction(action)
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 public class BasketTableController: UITableViewController {
     private var basket: Basket?
@@ -18,8 +19,6 @@ public class BasketTableController: UITableViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.navigationItem.title = "Basket"
-        
         self.tableView.register(UINib(nibName: "BasketProductCell", bundle: nil), forCellReuseIdentifier: "BasketProductCell")
         
         self.tabBarController?.navigationItem.title = "Basket"
@@ -29,7 +28,7 @@ public class BasketTableController: UITableViewController {
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.tabBarController?.navigationItem.title = "Basket"
         guard let userId = UserDefaults.instance.user?.id else {
             return
         }
@@ -51,8 +50,11 @@ public class BasketTableController: UITableViewController {
     }
     
     public func onAddToBasketButtonTap(productId: Int, quantity: Int) {
+        guard let user = UserDefaults.instance.user else {
+            return
+        }
         let addToBasket = NetworkService.instance.requestFactory.makeAddToBasketRequestFactory()
-        addToBasket.addToBasket(productId: productId, quantity: quantity) { response in
+        addToBasket.addToBasket(userId: user.id, productId: productId, quantity: quantity) { response in
             switch response.result {
             case .success(let value):
                 if value.result == 1 {
@@ -94,20 +96,27 @@ public class BasketTableController: UITableViewController {
     
     override public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
+        guard let user = UserDefaults.instance.user else {
+            return
+        }
+        
         if editingStyle == .delete {
             
             let deleteFromBasket = NetworkService.instance.requestFactory.makeDeleteFromBasketRequestFactory()
-            deleteFromBasket.deleteFromBasket(productId: basketProducts[indexPath.row].id) { response in
+            deleteFromBasket.deleteFromBasket(userId: user.id, productId: basketProducts[indexPath.row].id) { response in
                 switch response.result {
                 case .success(let value):
                     if value.result == 1 {
+                        Analytics.logEvent("DeleteFromBasket", parameters: nil)
                         self.basketProducts.remove(at: indexPath.row)
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
                         }
+                    } else {
+                        self.showAlert(error: value.errorMessage ?? "")
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    self.showAlert(error: error.localizedDescription)
                 }
             }
         }
@@ -164,6 +173,7 @@ public class BasketTableController: UITableViewController {
             case .success(let value):
                 print(value)
                 if value.result == 1 {
+                    Analytics.logEvent("Paid", parameters: nil)
                     self.showAlert(title: "Attention", message: value.userMessage)
                     self.setPaidStatus()
                 } else {
@@ -173,7 +183,6 @@ public class BasketTableController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
-        
     }
     
     private func setPaidStatus() {

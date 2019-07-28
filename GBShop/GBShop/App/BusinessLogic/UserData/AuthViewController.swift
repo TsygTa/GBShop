@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AuthViewController: UIViewController, Scrollable {
     
@@ -17,6 +18,10 @@ class AuthViewController: UIViewController, Scrollable {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var logoutButton: UIButton!
     
     @IBAction func onLoginButtonTap(_ sender: Any) {
         
@@ -35,13 +40,16 @@ class AuthViewController: UIViewController, Scrollable {
             case .success(let login):
                 print(login)
                 if login.result == 1 {
+                    self.hideKeyboard()
                     UserDefaults.instance.user = login.user
+                    Analytics.logEvent("Login", parameters: nil)
                     self.navigationController?.pushViewController(self.createTabBarController(), animated: true)
                 } else {
+                    Analytics.logEvent("Login Error", parameters: nil)
                     self.showAlert(error: login.errorMessage ?? "Error")
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                Analytics.logEvent("Login Error", parameters: nil)
                 self.showAlert(error: error.localizedDescription)
             }
         }
@@ -69,6 +77,34 @@ class AuthViewController: UIViewController, Scrollable {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
+    
+    @IBAction func onLogoutButtonTap(_ sender: Any) {
+        guard let userId = UserDefaults.instance.user?.id else {
+            return
+        }
+        let logOut = NetworkService.instance.requestFactory.makeLogOutRequestFactory()
+        logOut.logOut(userId: userId) { response in
+            switch response.result {
+            case .success(let value):
+                if value.result == 1 {
+                    Analytics.logEvent("Logout", parameters: nil)
+                    self.showAlert(title: "Attention", message: "Goodbye!")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            exit(0)
+                        }
+                    }
+                } else {
+                    self.showAlert(error: value.errorMessage ?? "")
+                }
+                
+            case .failure(let error):
+                self.showAlert(error: error.localizedDescription)
+            }
+        }
+    }
+    
     init() {
         super.init(nibName: "AuthViewController", bundle: nil)
     }
@@ -79,6 +115,11 @@ class AuthViewController: UIViewController, Scrollable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Login"
+        self.userNameTextField.accessibilityIdentifier = "AuthUserName"
+        self.passwordTextField.accessibilityIdentifier = "AuthPassword"
+        self.loginButton.accessibilityIdentifier = "AuthLogin"
+        
         self.activityIndicator.isHidden = true
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         self.view.addGestureRecognizer(hideKeyboardGesture)
@@ -87,6 +128,10 @@ class AuthViewController: UIViewController, Scrollable {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if UserDefaults.instance.user != nil {
+            self.logoutButton.isEnabled = true
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
         

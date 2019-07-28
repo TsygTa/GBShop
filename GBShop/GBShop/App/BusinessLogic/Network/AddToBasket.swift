@@ -25,8 +25,8 @@ public class AddToBasket: AbstractRequestFactory {
 
 // MARK: - реализация метода добавления товара в корзину
 extension AddToBasket: AddToBasketRequestFactory {
-    public func addToBasket(productId: Int, quantity: Int, completionHandler: @escaping(DataResponse<AddToBasketResult>) -> Void) {
-        let requestModel = AddToBasket(baseUrl: baseUrl, productId: productId, quantity: quantity)
+    public func addToBasket(userId: Int, productId: Int, quantity: Int, completionHandler: @escaping(DataResponse<AddToBasketResult>) -> Void) {
+        let requestModel = AddToBasket(baseUrl: baseUrl, userId: userId, productId: productId, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -38,11 +38,13 @@ extension AddToBasket {
         let method: HTTPMethod = .get
         let path: String = "addToBasket"
         
+        let userId: Int
         let productId: Int
         let quantity: Int
         
         var parameters: Parameters? {
             return [
+                "id_user": userId,
                 "id_product": productId,
                 "quantity": quantity
             ]

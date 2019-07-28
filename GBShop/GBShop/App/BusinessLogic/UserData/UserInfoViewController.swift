@@ -64,6 +64,8 @@ class UserInfoViewController: UIViewController, Scrollable {
                 print(value)
                 if value.result == 1 {
                     self.showAlert(title: "Attention", message: "User data has been changed")
+                } else {
+                    self.showAlert(error: value.errorMessage ?? "Error")
                 }
             case .failure(let error):
                 self.showAlert(error: error.localizedDescription)
@@ -82,8 +84,6 @@ class UserInfoViewController: UIViewController, Scrollable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.navigationItem.title = "User Profile"
-        
         self.activityIndicator.isHidden = true
         
         self.userNameTextField.text = UserDefaults.instance.user?.login
@@ -100,6 +100,8 @@ class UserInfoViewController: UIViewController, Scrollable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.tabBarController?.navigationItem.title = "User Profile"
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardWasShown), name: UIResponder.keyboardWillShowNotification, object: nil)
         

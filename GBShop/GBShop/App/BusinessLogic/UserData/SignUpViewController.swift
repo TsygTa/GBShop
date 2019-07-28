@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController, Scrollable {
 
@@ -31,8 +32,9 @@ class SignUpViewController: UIViewController, Scrollable {
         }
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
+        self.hideKeyboard()
         let signUp = NetworkService.instance.requestFactory.makeSignUpRequestFactory()
-        let user = User(
+        var user = User(
             id: 0,
             login: login,
             password: password,
@@ -46,20 +48,21 @@ class SignUpViewController: UIViewController, Scrollable {
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
             switch response.result {
-            case .success(let userMessage):
-                print(userMessage)
-                guard userMessage.result == 1, let message = userMessage.userMessage else {
-                    self.showAlert(error: "Registration error")
-                    return
+            case .success(let value):
+                print(value)
+                if value.result == 1, let userId = value.userId, userId > 0 {
+                    user.id = userId
+                    UserDefaults.instance.user = user
+                    Analytics.logEvent("SignUp", parameters: nil)
+                    self.showAlert(title: "Attention", message: value.userMessage ?? "")
+                } else {
+                    self.showAlert(error: value.userMessage ?? "Error")
                 }
-                UserDefaults.instance.user = user
-                self.showAlert(title: "Attention", message: message)
             case .failure(let error):
                 print(error.localizedDescription)
                 self.showAlert(error: error.localizedDescription)
             }
         }
-
     }
     
     init() {

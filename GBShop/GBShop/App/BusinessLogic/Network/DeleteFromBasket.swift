@@ -25,8 +25,8 @@ public class DeleteFromBasket: AbstractRequestFactory {
 
 // MARK: - реализация метода удаления товара из корзины
 extension DeleteFromBasket: DeleteFromBasketRequestFactory {
-    public func deleteFromBasket(productId: Int, completionHandler: @escaping(DataResponse<DeleteFromBasketResult>) -> Void) {
-        let requestModel = DeleteFromBasket(baseUrl: baseUrl, productId: productId)
+    public func deleteFromBasket(userId: Int, productId: Int, completionHandler: @escaping(DataResponse<DeleteFromBasketResult>) -> Void) {
+        let requestModel = DeleteFromBasket(baseUrl: baseUrl, userId: userId, productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -38,10 +38,12 @@ extension DeleteFromBasket {
         let method: HTTPMethod = .get
         let path: String = "deleteFromBasket"
         
+        let userId: Int
         let productId: Int
         
         var parameters: Parameters? {
             return [
+                "id_user": userId,
                 "id_product": productId
             ]
         }

@@ -23,8 +23,8 @@ class AddReview: AbstractRequestFactory {
 }
 
 extension AddReview: AddReviewRequestFactory {
-    func addReview(userId: Int, text: String, completionHandler: @escaping(DataResponse<AddReviewResult>) -> Void) {
-        let requestModel = AddReview(baseUrl: baseUrl, userId: userId, text: text)
+    func addReview(userId: Int, productId: Int, text: String, completionHandler: @escaping(DataResponse<AddReviewResult>) -> Void) {
+        let requestModel = AddReview(baseUrl: baseUrl, userId: userId, productId: productId, text: text)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -36,11 +36,13 @@ extension AddReview {
         let path: String = "addReview"
         
         let userId: Int
+        let productId: Int
         let text: String
         
         var parameters: Parameters? {
             return [
                 "id_user": userId,
+                "id_product" : productId,
                 "text": text
             ]
         }

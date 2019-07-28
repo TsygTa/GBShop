@@ -10,5 +10,6 @@ import Foundation
 import Alamofire
 
 public struct RemoveReviewResult: Codable {
-    private let result: Int
+    let result: Int
+    let errorMessage: String?
 }

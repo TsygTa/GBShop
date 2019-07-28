@@ -9,6 +9,14 @@
 import Foundation
 import Alamofire
 
+/// Протокол запроса на добавление отзыва
 protocol AddReviewRequestFactory {
-    func addReview(userId: Int, text: String, completionHandler: @escaping (DataResponse<AddReviewResult>) -> Void)
+    /// Формирует запрос на добавление отзыва
+    ///
+    /// - Parameters:
+    ///   - userId: id пользователя
+    ///   - productId: id продукта
+    ///   - text: текст отзыва
+    ///   - completionHandler: обработчик ответа на запрос
+    func addReview(userId: Int, productId: Int, text: String, completionHandler: @escaping (DataResponse<AddReviewResult>) -> Void)
 }

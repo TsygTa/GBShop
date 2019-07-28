@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProductsTableViewController: UITableViewController {
     
@@ -14,10 +15,17 @@ class ProductsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.navigationItem.title = "Products Catalog"
-    
+        
         self.tableView.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
         
+        self.tableView.allowsSelection = true
+        self.tableView.allowsMultipleSelection = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Analytics.logEvent("ProductCatalog", parameters: nil)
+        self.tabBarController?.navigationItem.title = "Products Catalog"
         let productsList = NetworkService.instance.requestFactory.makeProductsListRequestFactory()
         
         productsList.getProductsList(page: 1, categoryId: 1) { response in
@@ -29,13 +37,9 @@ class ProductsTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                self.showAlert(error:error.localizedDescription)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     public func onShowReviewButtonTap(productId: Int) {
@@ -43,11 +47,15 @@ class ProductsTableViewController: UITableViewController {
     }
     
     public func onAddToBasketButtonTap(productId: Int) {
+        guard let user = UserDefaults.instance.user else {
+            return
+        }
         let addToBasket = NetworkService.instance.requestFactory.makeAddToBasketRequestFactory()
-        addToBasket.addToBasket(productId: productId, quantity: 1) { response in
+        addToBasket.addToBasket(userId: user.id, productId: productId, quantity: 1) { response in
             switch response.result {
             case .success(let value):
                 if value.result == 1 {
+                    Analytics.logEvent("AddToBasket-ProductCatalog", parameters: nil)
                     self.showAlert(title: "Attention", message: "The product has been added to basket")
                 } else {
                     self.showAlert(error: "An error occurred")
@@ -85,6 +93,12 @@ class ProductsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let productViewController = ProductViewController(productId: self.products[indexPath.row].id)
+        self.navigationController?.pushViewController(productViewController, animated: true)
     }
 }

@@ -14,5 +14,5 @@ public protocol DeleteFromBasketRequestFactory {
     /// Удаление товара из корзины
     ///     productId - id товара
     /// Возвращает: результат запроса
-    func deleteFromBasket(productId: Int, completionHandler: @escaping (DataResponse<DeleteFromBasketResult>) -> Void)
+    func deleteFromBasket(userId: Int, productId: Int, completionHandler: @escaping (DataResponse<DeleteFromBasketResult>) -> Void)
 }

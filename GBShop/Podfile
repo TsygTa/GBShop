@@ -8,6 +8,7 @@ target 'GBShop' do
   # Pods for GBShop
   pod 'Alamofire'
   pod 'Swinject'
+  pod 'Firebase/Analytics'
 
   target 'GBShopTests' do
     inherit! :search_paths
@@ -16,7 +17,11 @@ target 'GBShop' do
 
   target 'GBShopUITests' do
     inherit! :search_paths
+    use_frameworks!
     # Pods for testing
+    pod 'Alamofire'
+    pod 'Swinject'
+    #project '../GBShop/GBShop/GBShop'
   end
 
 end

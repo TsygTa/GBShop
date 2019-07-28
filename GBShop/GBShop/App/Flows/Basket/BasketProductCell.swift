@@ -48,6 +48,7 @@ public class BasketProductCell: UITableViewCell {
         self.productIdLabel.text = "ID:\(product.id)"
         self.productPriceLabel.text = "\(product.price) RUB"
         self.quantityLabel.text = "\(product.quantity)"
+        self.stepper.value = Double(product.quantity)
         
         self.productId = product.id
         self.viewController = viewController

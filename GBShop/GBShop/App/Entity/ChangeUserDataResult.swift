@@ -10,4 +10,5 @@ import Foundation
 
 public struct ChangeUserDataResult: Codable {
     let result: Int
+    let errorMessage: String?
 }

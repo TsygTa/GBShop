@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,54 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var containerBuilder: ContainerBuilder?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
         window?.rootViewController = UINavigationController(rootViewController: AuthViewController())
         window?.makeKeyAndVisible()
 
-
-//        let logOut = requestFactory.makeLogOutRequestFactory()
-//        logOut.logOut(userId: 123) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//        let productData = requestFactory.makeProductDataRequestFactory()
-//        productData.getProductData(productId: 123) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//
-//
-//        let addReview = requestFactory.makeAddReviewRequestFactory()
-//        addReview.addReview(userId: 123, text: "Текст отзыва") { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//
-//        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
-//        removeReview.removeReview(reviewId: 123) { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-
-        
         return true
     }
 

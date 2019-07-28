@@ -10,5 +10,6 @@ import Foundation
 
 public struct SignUpResult: Codable {
     let result: Int
+    let userId: Int?
     let userMessage: String?
 }
