@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='GBShopUITests.xctest' tests='7' failures='2'>
+  <testsuite name='GBShopTests.GBShopTests' tests='2' failures='0'>
+    <testcase classname='GBShopTests.GBShopTests' name='testExample' time='0.002'/>
+    <testcase classname='GBShopTests.GBShopTests' name='testPerformanceExample' time='0.333'/>
+  </testsuite>
+  <testsuite name='GBShopTests.ResponseCodableTests' tests='3' failures='0'>
+    <testcase classname='GBShopTests.ResponseCodableTests' name='testExample' time='0.000'/>
+    <testcase classname='GBShopTests.ResponseCodableTests' name='testPerformanceExample' time='0.382'/>
+    <testcase classname='GBShopTests.ResponseCodableTests' name='testShouldDownloadAndParse' time='0.356'/>
+  </testsuite>
+  <testsuite name='GBShopUITests.GBShopUITests' tests='2' failures='2'>
+    <testcase classname='GBShopUITests.GBShopUITests' name='testFail'>
+      <failure message='No matches found for Find: Elements matching predicate &apos;&quot;AuthPassword&quot; IN identifiers&apos; from input {('>GBShopUITests.swift:54</failure>
+    </testcase>
+    <testcase classname='GBShopUITests.GBShopUITests' name='testSuccess'>
+      <failure message='No matches found for Find: Elements matching predicate &apos;&quot;AuthPassword&quot; IN identifiers&apos; from input {('>GBShopUITests.swift:54</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

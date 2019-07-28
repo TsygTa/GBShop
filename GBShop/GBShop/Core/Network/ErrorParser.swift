@@ -8,12 +8,25 @@
 
 import Foundation
 
+/// Обработка ошибок
 class ErrorParser: AbstractErrorParser {
-    func parse(_ result: Error) -> Error {
+    
+    /// Обработка ошибок
+    ///
+    /// - Parameter result: ошибка в результате запроса
+    /// - Returns: ошибка
+    public func parse(_ result: Error) -> Error {
         return result
     }
     
-    func parse(response: HTTPURLResponse?, data: Data?, error: Error?) -> Error? {
+    /// Обработка ошибок
+    ///
+    /// - Parameters:
+    ///   - response: запрос
+    ///   - data: данные - результат запроса
+    ///   - error: ошибка данных
+    /// - Returns: ошибка
+    public func parse(response: HTTPURLResponse?, data: Data?, error: Error?) -> Error? {
         return error
     }
     
