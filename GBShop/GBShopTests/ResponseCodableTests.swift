@@ -8,6 +8,7 @@
 
 import XCTest
 import Alamofire
+import Firebase
 
 struct PostStub: Codable {
     let userId: Int

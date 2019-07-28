@@ -9,6 +9,7 @@
 //
 
 import XCTest
+import Firebase
 
 class GBShopUITests: XCTestCase {
     
@@ -19,6 +20,8 @@ class GBShopUITests: XCTestCase {
         super.setUp()
         
         continueAfterFailure = false
+//        setupSnapshot(app)
+        
         app = XCUIApplication()
         app.launch()
         scrollViewsQuery = app.scrollViews
@@ -29,22 +32,25 @@ class GBShopUITests: XCTestCase {
     }
     
     func testSuccess() {
+        
+//        snapshot("LoginScreen")
         enterAuthData(login: "123", password: "123")
         checkAuth(message: "Добрый день!")
     }
 
     func testFail() {
+ //       snapshot("LoginScreen")
         enterAuthData(login: "1", password: "123")
         checkAuth(message: "Неверный логин или пароль")
     }
     
     private func enterAuthData(login: String, password: String) {
         let loginTextField = scrollViewsQuery.textFields["AuthUserName"]
-        let passwordTextField = scrollViewsQuery.textFields["AuthPassword"]
         
         loginTextField.tap()
         loginTextField.typeText(login)
         
+        let passwordTextField = scrollViewsQuery.textFields["AuthPassword"]
         passwordTextField.tap()
         passwordTextField.typeText(password)
         
